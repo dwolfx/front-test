@@ -6,20 +6,14 @@
 </template>
 
 <script>
-import infoGeral from './services/infos'
-import Page from './components/Page'
+
+import Page from './pages/pages'
 
 export default {
   name: 'app',
   components: {
     Page
   },
-  mounted(){
-    infoGeral.listar().then(resposta => {
-      this.dados = resposta.data
-      console.log(this.dados)
-    });
-  }
 }
 </script>
 
