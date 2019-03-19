@@ -1,13 +1,14 @@
 <template>
   <div id="container" :dados="dados">
-    <p>{{this.dados.customer_tracking_number}}</p>
-    <comp1 :dados="dados"/>
+    <h1>{{this.dados.customer.name}}</h1>
+    <p>ID do cliente {{this.dados.id}}</p>
+    <app-info :dados="dados"/>
   </div>
 </template>
 
 <script>
-import infoGeral from './../services/infos'
-import comp1 from './../components/geral'
+import infoGeral from './../services/data'
+import appInfo from './../components/infos'
 
 export default {
   mounted(){
@@ -21,7 +22,7 @@ export default {
     }
   },
   components: {
-    comp1
+    appInfo
   },
 }
 </script>
