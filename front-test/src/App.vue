@@ -1,28 +1,23 @@
 <template>
   <div id="app">
-    <Page/>
+    <Pages/>
   </div>
 </template>
 
 <script>
 
-import Page from './pages/pages'
+import Pages from './pages/pages'
 
 export default {
   name: 'app',
   components: {
-    Page
+    Pages
   },
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" src="./scss/style.scss">
+body { 
+  margin: 0 !important; 
 }
 </style>

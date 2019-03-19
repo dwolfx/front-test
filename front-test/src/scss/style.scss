@@ -1,0 +1,27 @@
+@import 'caller';
+*{
+  box-sizing: border-box;
+  font-family: 'Open Sans', helvetica, sans-serif;
+}
+body{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: $bg-page;
+}
+h1, h2, h3{
+  color: $title;
+  font-weight: lighter;
+  margin: 0;
+}
+p, ul, li{
+  color: $text;
+  margin: 0;
+}
+
+
+#app {
+  width: 100%;
+  max-width: 970px;
+  height: 100vh;
+}
