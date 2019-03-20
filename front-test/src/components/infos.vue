@@ -27,7 +27,7 @@
         <h3>Motorista</h3> 
       </div>
       <div class="content">
-        <p style="text-transform: uppercase">{{ this.dados.trucker.name | name }}</p>
+        <p style="text-transform: uppercase">{{ this.dados.trucker.name | nameFix }}</p>
       </div>
     </div>
 
@@ -37,7 +37,7 @@
         <h3>Telefone</h3> 
       </div>
       <div class="content">
-        <p>{{ this.dados.trucker.phone | phone }}</p>
+        <p>{{ this.dados.trucker.phone | phoneFix }}</p>
       </div>
     </div>
 
@@ -49,10 +49,10 @@
       <div class="content">
         <ul>
           <li v-if="this.dados.trucker.last_app_open_at">
-            Acesso {{ this.dados.trucker.last_app_open_at}}
+            Acesso {{ dataFix(this.dados.trucker.last_app_open_at) }}
           </li>
           <li v-if="this.dados.trucker.trackable_app_status">
-            GPS atualizado {{this.dados.trucker.last_app_position_at}}
+            GPS atualizado {{converterDate(this.dados.trucker.last_app_position_at)}}
           </li>
           <li>
             Primeiro acesso em {{this.dados.trucker.first_login_at}}
@@ -159,6 +159,61 @@
         <p>{{ timeConvert(this.dados.manual_input_estimated_time_of_arrival) }}</p>
       </div>
     </div>
+
+    <div class="item">
+      <div class="title">
+        <i class="material-icons">file_copy</i> 
+        <h3>Documentos</h3> 
+      </div>
+      <div class="content">
+        <button :disabled="!this.dados.documents[0].status">CTe</button>
+        <button :disabled="!this.dados.documents[1].status">MDFe</button>
+        <button :disabled="!this.dados.documents[2].status">Contrato</button>
+        <button :disabled="!this.dados.documents[3].status">CIOT</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="title">
+        <i class="material-icons">monetization_on</i> 
+        <h3>Pagamentos</h3> 
+      </div>
+      <div class="content">
+        <button :disabled="this.dados.payments[0].status == 'not_ok' ">Adiantamento</button>
+        <button :disabled="this.dados.payments[1].status == 'not_ok' ">Canhoto</button>
+        <button :disabled="this.dados.payments[2].status == 'not_ok' ">Saldo</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="title">
+        <i class="material-icons">timeline</i> 
+        <h3>Status</h3> 
+      </div>
+      <div class="content">
+        <div class="status">
+          <div class="statusTitle">
+            <i class="material-icons" v-if="this.dados.status_history[3]">check_circle</i>
+            <div class="circle" :class="[{'active' : this.dados.status_history[2]}]"></div>
+            <h2>Agendado</h2>
+          </div>
+          <div class="statusText" v-if="this.dados.status_history[2].at">
+            <p>{{timeConvert(this.dados.status_history[2].at) }}</p>
+          </div>
+        </div>
+        <div class="status">
+          <div class="statusTitle">
+            <i class="material-icons" v-if="this.dados.status_history[4]">check_circle</i>
+            <div class="circle" :class="[{'active' : this.dados.status_history[3]}]"></div>
+            <h2>Indo Coletar</h2>
+          </div>
+          <div class="statusText" v-if="this.dados.status_history[3].at">
+            <p>{{timeConvert(this.dados.status_history[3].at) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -168,10 +223,9 @@ export default {
     dados: []
   },
   methods: {
-    nameFix(name){
-      const regex = /[a-z]/;
-      const run = regex.exec(name)
-      return run
+    dataFix(nameee){
+      const regex = nameee.replace(/(\d{4})-(\d\d)-(\d\d)/, "$3-$2-$1");
+      return regex
     },
     timeConvert(timestamp) {
       if(timestamp) {
@@ -197,10 +251,14 @@ export default {
       } else {
         return 'Sem Data'
       }
+    },
+    converterDate(dataString){
+      const teste = Date.parse(dataString)
+      return this.timeConvert(teste)
     }
   },
   filters: {
-    phone(value) {
+    phoneFix(value) {
       const arr = value.split('')
       arr.splice(0, 0, '+')
       arr.splice(3, 0, ' (')
@@ -208,11 +266,21 @@ export default {
       arr.splice(13, 0, '-')
       return arr.join('')
     },
-    name(value){
+    nameFix(value){
       const arr = value.split('')
       arr.splice(15, 3, '')
       return arr.join('')
-    }
+    },
+    // dataFix(value){
+    //   const arr = value.split('')
+    //   arr.splice(10, 20, '')
+    //   let newDate = arr[3] + '/' + arr[2] + '/' + arr[1]
+    //   console.log(arr)
+    //   arr.splice(4, 1, '/')
+    //   arr.splice(7, 1, '/')
+      
+    //   return arr.join('')
+    // }
   }
 }
 </script>

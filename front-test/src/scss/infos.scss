@@ -26,6 +26,16 @@
       ul{
         padding-left: 15px;
       }
+      .status{
+        .statusTitle{
+          .circle{
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: blue;
+          }
+        }
+      }
     }
   }
 }
