@@ -9,7 +9,7 @@
         <app-info :dados="dados"/>
       </div>
       <div class="content-maps">
-
+        <app-map :dados="dados" />
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@
 <script>
 import infoGeral from './../services/data'
 import appInfo from './../components/infos'
-// import appMap from './../components/map'
+import appMap from './../components/map'
 
 export default {
   mounted(){
@@ -33,7 +33,7 @@ export default {
   },
   components: {
     appInfo,
-    // appMap
+    appMap
   },
 }
 </script>

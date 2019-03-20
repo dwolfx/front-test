@@ -330,10 +330,6 @@ export default {
         return 'Sem Data'
       }
     },
-    converterDate(dataString){
-      const teste = Date.parse(dataString)
-      return this.timeConvert(teste)
-    }
   },
   filters: {
     phoneFix(value) {
@@ -345,20 +341,15 @@ export default {
       return arr.join('')
     },
     dateFix(value){
-      const regex = (/([\d]{4})([\-|/]{1})([\d]{2})([\-|/]{1})([\d]{2})/)
+      const regex = (/([\d]{4})([-|/]{1})([\d]{2})([-|/]{1})([\d]{2})/)
       const regexValue = value.match(regex)
       const regexResult = regexValue[5]+'/'+regexValue[3]+'/'+regexValue[1]
       return regexResult
     },
     nameFix(value){
       const regex = (/([ ])+(\/)([^[ ])+([ ]*)/)
-      const nameRegex = value.match(regex)
-      const nameRemove = nameRegex[0]
-      console.log(nameRegex)
-      console.log(nameRemove)
-      const nameValue = nameRegex.replace(nameRemove, ' ')
-      console.log(nameValue)
-      return nameValue
+      const nameFix = value.replace(regex, ' ')
+      return nameFix
     },
   }
 }
