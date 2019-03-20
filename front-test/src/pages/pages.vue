@@ -1,14 +1,14 @@
 <template>
-  <div id="container" :dados="dados">
+  <div id="container">
     <div class="header">
       <h1>{{this.dados.customer.name}}</h1>
       <h3>ID do cliente {{this.dados.id}}</h3>
     </div>
     <div class="content">
-      <div class="infos">
+      <div class="content-info">
         <app-info :dados="dados"/>
       </div>
-      <div class="maps">
+      <div class="content-maps">
 
       </div>
     </div>
@@ -38,4 +38,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../scss/pages.scss"></style>
+<style lang="scss" scoped src="../scss/pages.scss"></style>

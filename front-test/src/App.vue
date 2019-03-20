@@ -16,8 +16,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./scss/style.scss">
-body { 
-  margin: 0 !important; 
-}
-</style>
+<style lang="scss" src="./scss/style.scss"></style>

@@ -1,0 +1,34 @@
+@import 'caller';
+
+.infos{
+  height: 97%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  .item{
+    width: 50%;
+    margin-bottom: 5px;
+    .title {
+      display: flex;
+      align-items: center;
+      color: $title;
+      margin-bottom: 3px;
+      i.material-icons{
+        margin: 0 5px;
+      }
+    }
+    .content{
+      margin-left: 35px;
+      p{
+        color: $text;
+        font-weight: 300;
+      }
+      ul{
+        padding-left: 15px;
+      }
+    }
+  }
+}
+.infos>*{
+  flex: 1 1 auto;
+}

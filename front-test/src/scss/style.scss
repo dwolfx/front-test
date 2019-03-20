@@ -14,11 +14,19 @@ h1, h2, h3{
   font-weight: lighter;
   margin: 0;
 }
+h3{
+  font-size: 1rem;
+}
 p, ul, li{
   color: $text;
   margin: 0;
+  font-size: 0.7rem;
+  font-weight: 100;
+  padding: 2px 0;
 }
-
+i.material-icons{
+  font-size: 25px;
+}
 
 #app {
   width: 100%;
