@@ -49,13 +49,13 @@
       <div class="content">
         <ul>
           <li v-if="this.dados.trucker.last_app_open_at">
-            Acesso {{ dataFix(this.dados.trucker.last_app_open_at) }}
+            Acesso {{ this.dados.trucker.last_app_open_at | dateFix }}
           </li>
           <li v-if="this.dados.trucker.trackable_app_status">
-            GPS atualizado {{converterDate(this.dados.trucker.last_app_position_at)}}
+            GPS atualizado {{this.dados.trucker.last_app_position_at | dateFix }}
           </li>
           <li>
-            Primeiro acesso em {{this.dados.trucker.first_login_at}}
+            Primeiro acesso em {{this.dados.trucker.first_login_at | dateFix }}
           </li>
           <li>
             Versão {{this.dados.trucker.app_version}}
@@ -126,41 +126,49 @@
       </div>
     </div>
 
-    <div class="item">
-      <div class="title">
-        <i class="material-icons">event_note</i> 
-        <h3>Coleta agendada</h3> 
-      </div>
-      <div class="content">
-        <p>{{ this.dados.pickup_date }}</p>
-      </div>
-
-      <div class="title">
-        <h3>Entrega agendada</h3> 
-        <i class="material-icons">help</i> 
-      </div>
-      <div class="content">
-        <p>{{ timeConvert(this.dados.delivery_date) }}</p>
+    <div class="item crono">
+      <div class="item-crono">
+        <div class="title">
+          <i class="material-icons">event_note</i> 
+          <h3>Coleta agendada</h3> 
+        </div>
+        <div class="content">
+          <p>{{ this.dados.pickup_date | dateFix }}</p>
+        </div>
       </div>
 
-      <div class="title">
-        <h3>Entrega calculada</h3> 
-        <i class="material-icons">help</i> 
-      </div>
-      <div class="content">
-        <p>{{ timeConvert(this.dados.delivery_date) }}</p>
+      <div class="item-crono">
+        <div class="title">
+          <h3>Entrega agendada</h3> 
+          <i class="material-icons">help</i> 
+        </div>
+        <div class="content">
+          <p>{{ timeConvert(this.dados.delivery_date) }}</p>
+        </div>
       </div>
 
-      <div class="title">
-        <h3>Entrega manual</h3> 
-        <i class="material-icons">help</i> 
+      <div class="item-crono">
+        <div class="title">
+          <h3>Entrega calculada</h3> 
+          <i class="material-icons">help</i> 
+        </div>
+        <div class="content">
+          <p>{{ timeConvert(this.dados.delivery_date) }}</p>
+        </div>
       </div>
-      <div class="content">
-        <p>{{ timeConvert(this.dados.manual_input_estimated_time_of_arrival) }}</p>
+
+      <div class="item-crono">
+        <div class="title">
+          <h3>Entrega manual</h3> 
+          <i class="material-icons">help</i> 
+        </div>
+        <div class="content">
+          <p>{{ timeConvert(this.dados.manual_input_estimated_time_of_arrival) }}</p>
+        </div>
       </div>
     </div>
 
-    <div class="item">
+    <div class="item docs">
       <div class="title">
         <i class="material-icons">file_copy</i> 
         <h3>Documentos</h3> 
@@ -173,7 +181,7 @@
       </div>
     </div>
 
-    <div class="item">
+    <div class="item pay">
       <div class="title">
         <i class="material-icons">monetization_on</i> 
         <h3>Pagamentos</h3> 
@@ -197,18 +205,92 @@
             <div class="circle" :class="[{'active' : this.dados.status_history[2]}]"></div>
             <h2>Agendado</h2>
           </div>
-          <div class="statusText" v-if="this.dados.status_history[2].at">
+          <div class="arrow" :class="[{'active': this.dados.status_history[3], 'completed': this.dados.status_history[4] }]"></div>
+          <div class="statusText" v-if="this.dados.status_history[2]">
             <p>{{timeConvert(this.dados.status_history[2].at) }}</p>
           </div>
         </div>
+
         <div class="status">
           <div class="statusTitle">
             <i class="material-icons" v-if="this.dados.status_history[4]">check_circle</i>
             <div class="circle" :class="[{'active' : this.dados.status_history[3]}]"></div>
             <h2>Indo Coletar</h2>
           </div>
-          <div class="statusText" v-if="this.dados.status_history[3].at">
+          <div class="arrow" :class="[{'active': this.dados.status_history[4], 'completed': this.dados.status_history[5] }]"></div>
+          <div class="statusText" v-if="this.dados.status_history[3]">
             <p>{{timeConvert(this.dados.status_history[3].at) }}</p>
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="statusTitle">
+            <i class="material-icons" v-if="this.dados.status_history[5]">check_circle</i>
+            <div class="circle" :class="[{'active' : this.dados.status_history[4]}]"></div>
+            <h2>Fila coleta</h2>
+          </div>
+          <div class="arrow" :class="[{'active': this.dados.status_history[5], 'completed': this.dados.status_history[6] }]"></div>
+          <div class="statusText" v-if="this.dados.status_history[4]">
+            <p>{{timeConvert(this.dados.status_history[4].at) }}</p>
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="statusTitle">
+            <i class="material-icons" v-if="this.dados.status_history[6]">check_circle</i>
+            <div class="circle" :class="[{'active' : this.dados.status_history[5]}]"></div>
+            <h2>Carregando</h2>
+          </div>
+          <div class="arrow" :class="[{'active': this.dados.status_history[6], 'completed': this.dados.status_history[7] }]"></div>
+          <div class="statusText" v-if="this.dados.status_history[5]">
+            <p>{{timeConvert(this.dados.status_history[5].at) }}</p>
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="statusTitle">
+            <i class="material-icons" v-if="this.dados.status_history[7]">check_circle</i>
+            <div class="circle" :class="[{'active' : this.dados.status_history[6]}]"></div>
+            <h2>Em Trânsito</h2>
+          </div>
+          <div class="arrow" :class="[{'active': this.dados.status_history[7], 'completed': this.dados.status_history[8] }]"></div>
+          <div class="statusText" v-if="this.dados.status_history[6]">
+            <p>{{timeConvert(this.dados.status_history[6].at) }}</p>
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="statusTitle">
+            <i class="material-icons" v-if="this.dados.status_history[8]">check_circle</i>
+            <div class="circle" :class="[{'active' : this.dados.status_history[7]}]"></div>
+            <h2>Fila Descarga</h2>
+          </div>
+          <div class="arrow" :class="[{'active': this.dados.status_history[8], 'completed': this.dados.status_history[9] }]"></div>
+          <div class="statusText" v-if="this.dados.status_history[7]">
+            <p>{{timeConvert(this.dados.status_history[7].at) }}</p>
+          </div>
+        </div>
+        
+        <div class="status">
+          <div class="statusTitle">
+            <i class="material-icons" v-if="this.dados.status_history[9]">check_circle</i>
+            <div class="circle" :class="[{'active' : this.dados.status_history[8]}]"></div>
+            <h2>Descarregando</h2>
+          </div>
+          <div class="arrow" :class="[{'active': this.dados.status_history[9], 'completed': this.dados.status_history[10] }]"></div>
+          <div class="statusText" v-if="this.dados.status_history[8]">
+            <p>{{timeConvert(this.dados.status_history[8].at) }}</p>
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="statusTitle">
+            <i class="material-icons" v-if="this.dados.status_history[10]">check_circle</i>
+            <div class="circle" :class="[{'active' : this.dados.status_history[9]}]"></div>
+            <h2>Entregue</h2>
+          </div>
+          <div class="statusText" v-if="this.dados.status_history[9]">
+            <p>{{timeConvert(this.dados.status_history[9].at) }}</p>
           </div>
         </div>
       </div>
@@ -223,10 +305,6 @@ export default {
     dados: []
   },
   methods: {
-    dataFix(nameee){
-      const regex = nameee.replace(/(\d{4})-(\d\d)-(\d\d)/, "$3-$2-$1");
-      return regex
-    },
     timeConvert(timestamp) {
       if(timestamp) {
         var a = new Date(timestamp * 1000);
@@ -266,21 +344,22 @@ export default {
       arr.splice(13, 0, '-')
       return arr.join('')
     },
-    nameFix(value){
-      const arr = value.split('')
-      arr.splice(15, 3, '')
-      return arr.join('')
+    dateFix(value){
+      const regex = (/([\d]{4})([\-|/]{1})([\d]{2})([\-|/]{1})([\d]{2})/)
+      const regexValue = value.match(regex)
+      const regexResult = regexValue[5]+'/'+regexValue[3]+'/'+regexValue[1]
+      return regexResult
     },
-    // dataFix(value){
-    //   const arr = value.split('')
-    //   arr.splice(10, 20, '')
-    //   let newDate = arr[3] + '/' + arr[2] + '/' + arr[1]
-    //   console.log(arr)
-    //   arr.splice(4, 1, '/')
-    //   arr.splice(7, 1, '/')
-      
-    //   return arr.join('')
-    // }
+    nameFix(value){
+      const regex = (/([ ])+(\/)([^[ ])+([ ]*)/)
+      const nameRegex = value.match(regex)
+      const nameRemove = nameRegex[0]
+      console.log(nameRegex)
+      console.log(nameRemove)
+      const nameValue = nameRegex.replace(nameRemove, ' ')
+      console.log(nameValue)
+      return nameValue
+    },
   }
 }
 </script>

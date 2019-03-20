@@ -7,7 +7,7 @@
   flex-wrap: wrap;
   .item{
     width: 50%;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
     .title {
       display: flex;
       align-items: center;
@@ -27,16 +27,94 @@
         padding-left: 15px;
       }
       .status{
+        height: 50px;
+        position: relative;
         .statusTitle{
+          display: flex;
+          align-items: center;
+          position: relative;
           .circle{
-            width: 10px;
-            height: 10px;
-            border-radius: 5px;
-            background-color: blue;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid $icon-sleep;
+            position: absolute;
+            left: 2px;
+            &.active{
+              border: 2px solid #218CFF;
+            }
+          }
+          i.material-icons {
+            position: absolute;
+            left: 0;
+            z-index: 1;
+            color: #E67C22;
+            background-color: white;
+          }
+          h2 {
+            margin-left: 35px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: $text;
+          }
+        }
+        .statusText{
+          padding-left: 35px;
+        }
+        .arrow{
+          width: 2px;
+          height: 25px;
+          position: absolute;
+          left: 5%;
+          top: 40%;
+          background-color: $icon-sleep;
+          &.active{
+            background-color: $icon-wait;
+            &.completed{
+              background-color: $icon-active;
+            }
           }
         }
       }
     }
+    &.docs, &.pay{
+      .content{
+        button{
+          background-color: $btn-active;
+          margin: 1px 5px 0 0;
+          border-radius: 5px;
+          border: 0;
+          padding: 5px;
+          color: white;
+          font-weight: 100;
+          outline: none;
+          cursor: pointer;
+          &:disabled{
+            background-color: white;
+            border: 1px solid #B0BEC4;
+            color: #B0BEC4;
+            cursor: unset;
+          }
+        }
+      }
+    }
+    &.crono{
+      .item-crono{
+        height: 50px;
+        .title{
+          margin-left: 35px;
+          i.material-icons{
+            font-size: 15px;
+          }
+        }
+        &:first-child{
+          .title{
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
   }
 }
 .infos>*{
