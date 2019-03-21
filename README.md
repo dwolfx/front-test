@@ -1,7 +1,7 @@
 # Desafio CargoX
 
 
-##Considerações do Candidato Victor Hugo Nogueira
+## Considerações do Candidato Victor Hugo Nogueira
 
 Muito obrigado pela oportunidade em participar do processo seletivo de vocês.
 Realizei o projeto conforme o solicitado, porem alguns pontos preciso explicar.
@@ -15,7 +15,7 @@ Adorei a proposta e espero em breve poder conhecer vocês todos!
 Abraços.
 
 
-##Apresentação CargoX
+## Apresentação CargoX
 Bem vindo! Se você está aqui é porque gostamos do seu perfil e queremos conhecer um pouco mais sobre suas habilidades como desenvolvedor.
 
 Nesse desafio você terá que fazer um _fork_ e submeter `Pull Requests` para este repos resolvendo o problema em questão.
