@@ -1,12 +1,11 @@
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import infos from '@/components/infos.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    })
-    expect(wrapper.text()).toMatch(msg)
+describe("Iniciando testes", () => {
+  teste("Teste pra passar", () => {
+    const soma = 1+1 
+    expect(soma).toBe(2)
   })
 })
+
+

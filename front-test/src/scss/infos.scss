@@ -5,8 +5,17 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  @media screen and (max-width: 969px){
+    flex-wrap: nowrap;
+  }
+  @media screen and (max-width: 669px){
+    flex-wrap: wrap;
+  }
+  @media screen and (max-width: 579px){
+    flex-wrap: nowrap;
+  }
   .item{
-    width: 50%;
+    width: 275px;
     margin-bottom: 12px;
     .title {
       display: flex;

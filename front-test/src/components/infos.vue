@@ -24,7 +24,7 @@
     <div class="item">
       <div class="title">
         <i class="material-icons">assignment_ind</i> 
-        <h3>Motorista</h3> 
+        <h3>Motorista</h3>
       </div>
       <div class="content">
         <p style="text-transform: uppercase">{{ this.dados.trucker.name | nameFix }}</p>
