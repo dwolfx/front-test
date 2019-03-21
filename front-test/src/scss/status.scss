@@ -1,0 +1,73 @@
+@import 'caller';
+
+.comp-status{
+  .title {
+    display: flex;
+    align-items: center;
+    color: $title;
+    margin-bottom: 3px;
+    i.material-icons{
+      margin: 0 5px;
+    }
+  }
+  .content{
+    margin-left: 35px;
+    p{
+      color: $text;
+      font-weight: 300;
+    }
+    ul{
+      padding-left: 15px;
+    }
+    .status{
+      height: 50px;
+      position: relative;
+      .statusTitle{
+        display: flex;
+        align-items: center;
+        position: relative;
+        .circle{
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          border: 2px solid $icon-sleep;
+          position: absolute;
+          left: 2px;
+          &.active{
+            border: 2px solid #218CFF;
+          }
+        }
+        i.material-icons {
+          position: absolute;
+          left: 0;
+          z-index: 1;
+          color: #E67C22;
+          background-color: white;
+        }
+        h2 {
+          margin-left: 35px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: $text;
+        }
+      }
+      .statusText{
+        padding-left: 35px;
+      }
+      .arrow{
+        width: 2px;
+        height: 25px;
+        position: absolute;
+        left: 5%;
+        top: 40%;
+        background-color: $icon-sleep;
+        &.active{
+          background-color: $icon-wait;
+          &.completed{
+            background-color: $icon-active;
+          }
+        }
+      }
+    }
+  } 
+}
