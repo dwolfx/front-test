@@ -4,16 +4,19 @@
 ## Considerações do Candidato Victor Hugo Nogueira
 
 Muito obrigado pela oportunidade em participar do processo seletivo de vocês.
-Realizei o projeto conforme o solicitado, porem alguns pontos preciso explicar.
 
-Não sou muito familiarizado com o VueJS e infelizmente não atuo com ele no dia a dia, portanto podem ter algumas coisas que com a prática eu aprenda diária eu aprenda a fazer de outra forma.
+Este foi um desafio bem gostoso de se fazer, com algumas pegadinhas na API que foi divertido tratar. rs
 
-Por mais que eu entenda a importancia e como funciona o TDD, não consegui aplicar o JEST neste projeto VueJS em questão.
+Realizei o projeto conforme o solicitado, porem alguns pontos preciso explicar:
+
+Não sou muito familiarizado com o `VueJS` e infelizmente não atuo com ele no dia a dia, portanto podem ter algumas coisas que com a prática eu aprenda diária eu aprenda a fazer de outra forma.
+
+Por mais que eu entenda a importancia e como funciona o _TDD_, não consegui aplicar os testes unitários neste projeto `VueJS` em questão.
 
 Adorei a proposta e espero em breve poder conhecer vocês todos!
 
 Abraços.
-
+Victor Hugo Nogueira
 
 ## Apresentação CargoX
 Bem vindo! Se você está aqui é porque gostamos do seu perfil e queremos conhecer um pouco mais sobre suas habilidades como desenvolvedor.
