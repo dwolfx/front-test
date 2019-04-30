@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import infos from '@/components/infos.vue'
+import infos from '@/components/pages.vue'
 
 describe("Iniciando testes", () => {
   teste("Teste pra passar", () => {

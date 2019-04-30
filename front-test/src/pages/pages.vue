@@ -16,19 +16,19 @@
 </template>
 
 <script>
-import infoGeral from './../services/data'
+// import infoGeral from './../services/config'
 import appInfo from './../components/infos'
 import appMap from './../components/map'
 
 export default {
-  mounted(){
-    infoGeral.listar().then(resposta => {
-      this.dados = resposta.data
-    });
+  created() {
+    this.$dataApi('5c7552e43100009c20c23450.json').then(res => {
+      this.dados = res.data
+    })
   },
   data() {
     return {
-      dados: [],
+      dados: []
     }
   },
   components: {
